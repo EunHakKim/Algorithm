@@ -1,19 +1,11 @@
 N=int(input())
 A=list(map(int,input().split()))
 
-longA=[]
+dp = [1] * N
 
-for i in range(N):
-    if i==0:
-        longA.append(A[i])
-    elif A[i]>longA[-1]:
-        longA.append(A[i])
-    elif A[i]==longA[-1]:
-        pass
-    else:
-        for j in range(len(longA)):
-            if A[i]<longA[j]:
-                longA[j]=A[i]
-                break
+for i in range(1, N) :
+    for j in range(i) :
+        if A[i] > A[j] :
+            dp[i] = max(dp[i], dp[j]+1)
 
-print(len(longA))
+print(max(dp))
