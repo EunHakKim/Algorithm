@@ -26,4 +26,4 @@ def backtracking():
             profits.pop()
 
 backtracking()
-print(result)
+print(max(result))
