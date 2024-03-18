@@ -2,7 +2,7 @@ import sys
 
 def backtracking(depth, index):
     global result
-    if depth>=N:
+    if depth>N//2:
         return
     elif depth>=1:
         start,link=0,0
@@ -12,7 +12,10 @@ def backtracking(depth, index):
                     start+=S[i][j]
                 elif not visited[i] and not visited[j]:
                     link+=S[i][j]
-        result=min(result, abs(start-link))    
+        result=min(result, abs(start-link))  
+        if result==0:
+            print(0)
+            exit()  
 
     for i in range(index, N):
         if not visited[i]:
