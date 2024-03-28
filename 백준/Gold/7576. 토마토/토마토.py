@@ -13,14 +13,6 @@ for i in range(M):
 dx=[1,0,-1,0]
 dy=[0,-1,0,1]
 
-temp=1
-for i in range(N):
-    if 0 in tomato[i]:
-        temp=0
-if temp==1:
-    print(0)
-    exit()
-
 while queue:
     x,y=queue.popleft()
     for i in range(4):
