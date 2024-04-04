@@ -5,22 +5,21 @@ input = sys.stdin.readline
 ans = []
 
 
-def solve(n, graph, order) :
+def solve(N, graph, order) :
 
-    visited = [False for _ in range(n+1)]
+    visited = [False for _ in range(N+1)]
     queue = deque()
 
     queue.append(1)
     visited[1] = True
-    
 
-    rank = [-1 for i in range(n+1)]
+    rank = [-1 for i in range(N+1)]
 
-    for i in range(1,n+1) :
+    for i in range(1,N+1) :
         rank[order[i-1]] = i 
     
     
-    for i in range(1,n+1) :
+    for i in range(1,N+1) :
         graph[i] = sorted(graph[i], key=lambda x : rank[x])
 
     while queue :
@@ -37,14 +36,14 @@ def solve(n, graph, order) :
     else :
         print(0)
 
-n = int(input())
-graph = [[] for _ in range(n+1)]
+N = int(input())
+graph = [[] for _ in range(N+1)]
 
-for _ in range(1,n) :
+for _ in range(1,N) :
     x,y = map(int,input().split())
     graph[x].append(y)
     graph[y].append(x)
 
 order = list(map(int,input().split()))
 
-solve(n,graph,order)
+solve(N,graph,order)
