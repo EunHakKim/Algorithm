@@ -1,31 +1,34 @@
-arr=input()
-stack=[]
+import sys
+input = sys.stdin.readline
 
-answer=0
-tmp=1
+arr = list(map(str, input().strip()))
+stack = []
+temp = 1
+answer = 0
+
 for i in range(len(arr)):
     if arr[i] =='(':
         stack.append(arr[i])
-        tmp *=2
+        temp *=2
     elif arr[i] == '[':
         stack.append(arr[i])
-        tmp *=3
+        temp *=3
     elif arr[i] == ")":
         if not stack or stack[-1] == "[":
-            answer = 0 # 실패
+            answer = 0
             break
         if arr[i-1] == "(":
-            answer += tmp
+            answer += temp
         stack.pop()
-        tmp //= 2  #tmp 초기화
+        temp //= 2
     else:
         if not stack or stack[-1] == "(":
             answer=0
             break
         if arr[i-1] =='[':
-            answer+=tmp
+            answer+=temp
         stack.pop()
-        tmp //=3 #tmp 초기화
+        temp //=3
 
 if stack:
     print(0)
