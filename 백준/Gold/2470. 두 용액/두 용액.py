@@ -4,13 +4,12 @@ input = sys.stdin.readline
 n = int(input())
 arr = list(map(int,input().split()))
 ans = sys.maxsize
-left = 0
-right = len(arr) - 1
+left, right = 0, n - 1
 
 arr.sort()
-x, y = 0, len(arr) - 1
+x, y = 0, n - 1
 
-while True:
+while x < y:
     mix = arr[x] + arr[y]
     if abs(mix) < ans:
         ans = abs(mix)
@@ -21,18 +20,11 @@ while True:
         y -= 1
         if x == y:
             y -= 1
-        if y < 0:
-            break
     elif mix < 0:
         x += 1
         if x == y:
             x += 1
-        if x > len(arr) - 1:
-            break
     else:
         break
 
-if arr[left] < arr[right]:
-    print(arr[left], arr[right])
-else:
-    print(arr[right], arr[left])
+print(arr[left], arr[right])
