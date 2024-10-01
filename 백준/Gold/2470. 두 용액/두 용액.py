@@ -18,12 +18,8 @@ while x < y:
 
     if mix > 0:
         y -= 1
-        if x == y:
-            y -= 1
     elif mix < 0:
         x += 1
-        if x == y:
-            x += 1
     else:
         break
 
