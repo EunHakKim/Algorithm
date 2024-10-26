@@ -18,8 +18,8 @@ for word in words:
         else:
             cnt[word[i]] = 10 ** i
 
-sorted_cnt = sorted(cnt.items(), key = lambda item:item[1], reverse=True)
-for key, value in sorted_cnt:
+sorted_cnt = sorted(cnt.values(), reverse=True)
+for value in sorted_cnt:
     ans += value * temp
     temp -= 1
 
