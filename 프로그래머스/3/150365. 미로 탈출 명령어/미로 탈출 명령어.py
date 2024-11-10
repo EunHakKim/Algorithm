@@ -1,6 +1,3 @@
-from copy import copy
-import sys
-sys.setrecursionlimit(10**6)
 def solution(n, m, x, y, r, c, k):
     answer = ''
     if k < abs(r - x) + abs(c - y):
