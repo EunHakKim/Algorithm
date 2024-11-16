@@ -18,4 +18,4 @@ while s > 0 and target < n:
     a.insert(target, temp)
     target += 1
 
-print(" ".join(map(str, a)))
+print(*a)
