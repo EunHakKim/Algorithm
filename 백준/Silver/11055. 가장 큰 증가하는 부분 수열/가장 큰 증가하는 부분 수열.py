@@ -1,10 +1,14 @@
-N=int(input())
-A=list(map(int,input().split()))
-dp=[x for x in A]
+import sys
+input = sys.stdin.readline
 
-for i in range(1,N):
+n = int(input())
+a = list(map(int, input().split()))
+
+dp = [x for x in a]
+
+for i in range(1, n):
     for j in range(i):
-        if A[i]>A[j]:
-            dp[i]=max(dp[j]+A[i],dp[i])
+        if a[i] > a[j]:
+            dp[i] = max(dp[j] + a[i], dp[i])
 
 print(max(dp))
