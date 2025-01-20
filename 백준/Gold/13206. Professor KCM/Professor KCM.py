@@ -23,17 +23,14 @@ for _ in range(t):
                 number[j] = False
 
     # 최대값 계산
-    for i in nums:
-        while i != 1:
-            for j in prime:
-                cnt = 0
-                while i % j == 0:
-                    i //= j
-                    cnt += 1
-                result[j] = max(result[j], cnt)
-
-    for k, v in result.items():
-        ans *= (k ** v)
-        ans %= 1000000007
+    for i in prime:
+        max_temp = 0
+        for j in nums:
+            temp = 0
+            while j % i == 0 and j > 1:
+                j //= i
+                temp += 1
+            max_temp = max(max_temp, temp)
+        ans = (ans * (i ** max_temp)) % 1000000007
 
     print(ans)
