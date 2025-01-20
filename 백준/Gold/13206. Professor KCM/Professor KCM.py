@@ -12,12 +12,10 @@ for _ in range(t):
     number = [True for _ in range(1001)]
     number[0], number[1] = False, False
     prime = []
-    result = {}
 
     for i in range(2, 1001):
         if number[i]:
             prime.append(i)
-            result[i] = 0
             j = 2
             for j in range(2 * i, 1001, i):
                 number[j] = False
