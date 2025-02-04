@@ -43,11 +43,12 @@ while True:
                 bfs(j, i)
 
     if len(ally) == 0:
-        print(ans)
-        exit()
+        break
     ans += 1
     
     for i in range(len(ally)):
         cnt = people[i] // len(ally[i])
         for x, y in ally[i]:
             popul[y][x] = cnt
+
+print(ans)
