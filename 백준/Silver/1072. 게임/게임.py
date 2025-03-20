@@ -3,7 +3,7 @@ input = sys.stdin.readline
 
 x, y = map(int, input().split())
 z = y * 100 // x
-st, en = 1, 1000000000
+st, en = 1, x
 
 if z >= 99:
     print(-1)
