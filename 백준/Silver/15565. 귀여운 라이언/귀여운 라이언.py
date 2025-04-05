@@ -20,7 +20,7 @@ while lion_cnt < k:
         lion_cnt += 1
 
 ans = right - left + 1
-while right < n:
+while True:
     right += 1
     if right == n:
         break
