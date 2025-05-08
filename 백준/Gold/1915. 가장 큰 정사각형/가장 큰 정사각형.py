@@ -1,20 +1,16 @@
 import sys
 input = sys.stdin.readline
 
-m, n = map(int, input().split())
-nums = [list(input()) for _ in range(m)]
-dp = [[] for _ in range(m)]
-for i in range(m):
-    for j in range(n):
-        dp[i].append(int(nums[i][j]))
+n, m = map(int, input().split())
+nums = [list(map(int, list(input().strip()))) for _ in range(n)]
 
-for i in range(1, m):
-    for j in range(1, n):
-        if dp[i][j] == 1:
-            dp[i][j] = min(dp[i-1][j], dp[i][j-1], dp[i-1][j-1]) + 1
+for i in range(1, n):
+    for j in range(1, m):
+        if nums[i][j] == 1:
+            nums[i][j] = min(nums[i - 1][j], nums[i][j - 1], nums[i - 1][j - 1]) + 1
 
 ans = 0
-for arr in dp:
-    temp = max(arr)
+for x in nums:
+    temp = max(x)
     ans = max(ans, temp)
 print(ans ** 2)
