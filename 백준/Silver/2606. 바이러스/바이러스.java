@@ -1,51 +1,46 @@
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Scanner;
+
+import java.util.*;
+import java.io.*;
 
 public class Main {
-
-    public static int N;
-    public static int M;
-    public static int[][] graph;
+    public static int n, m, ans;
+    public static List[] graph;
     public static boolean[] visited;
-    public static Queue<Integer> queue;
-    public static int result;
 
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        N=sc.nextInt();
-        M=sc.nextInt();
+    public static void main(String[] args) throws IOException{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        n = Integer.parseInt(br.readLine());
+        m = Integer.parseInt(br.readLine());
+        graph = new List[n + 1];
+        visited = new boolean[n + 1];
 
-        graph = new int[101][101];
-        visited = new boolean[101];
-
-        for(int i=1;i<M+1;i++){
-            int a = sc.nextInt();
-            int b = sc.nextInt();
-
-            graph[a][b]=1;
-            graph[b][a]=1;
+        for(int i = 0;i<n+1;i++) {
+            graph[i] = new ArrayList<>();
         }
 
-        bfs(1);
-    }
+        StringTokenizer st;
+        for (int i = 0; i < m; i++) {
+            st = new StringTokenizer(br.readLine());
+            int a = Integer.parseInt(st.nextToken());
+            int b = Integer.parseInt(st.nextToken());
+            graph[a].add(b);
+            graph[b].add(a);
+        }
 
-    public static void bfs(int index){
-        queue = new LinkedList<>();
-
-        visited[index]=true;
-        queue.offer(index);
-        result=0;
-        while (!queue.isEmpty()){
-            int temp = queue.poll();
-            result+=1;
-            for(int i=1;i<N+1;i++){
-                if(graph[temp][i]==1 && !visited[i]){
-                    queue.offer(i);
-                    visited[i]=true;
+        Queue<Integer> queue = new LinkedList<>();
+        queue.add(1);
+        visited[1] = true;
+        ans = 0;
+        while (!queue.isEmpty()) {
+            int nc = queue.poll();
+            for(int i = 0; i < graph[nc].size(); i++) {
+                if (!visited[(int)graph[nc].get(i)]) {
+                    visited[(int)graph[nc].get(i)] = true;
+                    queue.add((int)graph[nc].get(i));
+                    ans ++;
                 }
             }
         }
-        System.out.println(result-1);
+        System.out.println(ans);
     }
 }
